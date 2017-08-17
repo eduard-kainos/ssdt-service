@@ -5,9 +5,18 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
-/*app.post('/login', function(req, res) {
+app.post('/login', function(req, res) {
+    console.log("login request");
+    const username = req.body.username;
+    const password = req.body.password;
+    console.log(username + " " + password);
 
-} */
+    if(username && password) {
+        db.login(username, password, function(message) {
+            res.send(message);
+        });
+    }
+});
 
 app.get('/emps', function(req, res){
     db.getEmployeesInDept('1', function(rows){

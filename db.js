@@ -1,28 +1,34 @@
 const mysql = require('mysql');
 const config = require('./config.json');
 
-//const db;
+var db;
 
-const db = mysql.createConnection({
+/* const db = mysql.createConnection({
     host: config.host,
     user: config.user,
     password: config.password,
     database: 'ssdtdb'
-});
+}); */
 
-db.connect(function (err) {
+/* db.connect(function (err) {
     if(err) throw err;
     console.log("Connected to mysql.");
-});
+}); */
 
-/* exports.login = function (username, password, callback){
+exports.login = function (username, password, callback){
+    console.log("logging in'");
     db = mysql.createConnection({
-        host: localhost,
+        host: "localhost",
         user: username,
-        password: pas,
+        password: password,
         database: 'ssdtdb'
     });
-} */
+
+    db.connect(function (err) {
+        if(err) throw err;
+        callback("Logged in.");
+    });
+}
 
 exports.getEmployeesInDept = function (departmentID, callback){
     db.query(
