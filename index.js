@@ -12,8 +12,8 @@ app.post('/login', function(req, res) {
     console.log(username + " " + password);
 
     if(username && password) {
-        db.login(username, password, function(message) {
-            res.send(message);
+        db.login(username, password, function(rows) {
+            res.send(rows);
         });
     }
 });

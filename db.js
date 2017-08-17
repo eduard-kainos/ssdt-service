@@ -3,22 +3,10 @@ const config = require('./config.json');
 
 var db;
 
-/* const db = mysql.createConnection({
-    host: config.host,
-    user: config.user,
-    password: config.password,
-    database: 'ssdtdb'
-}); */
-
-/* db.connect(function (err) {
-    if(err) throw err;
-    console.log("Connected to mysql.");
-}); */
-
 exports.login = function (username, password, callback){
     console.log("logging in'");
     db = mysql.createConnection({
-        host: "localhost",
+        host: "192.168.1.215",
         user: username,
         password: password,
         database: 'ssdtdb'
@@ -26,7 +14,14 @@ exports.login = function (username, password, callback){
 
     db.connect(function (err) {
         if(err) throw err;
-        callback("Logged in.");
+        db.query(
+            "SELECT privs FROM privileges WHERE username = ?",
+            [username],
+            function(err, rows){
+                if(err) throw err;
+                callback(rows);
+            }
+        )
     });
 }
 
