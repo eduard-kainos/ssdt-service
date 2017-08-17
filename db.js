@@ -40,7 +40,7 @@ exports.getEmployeesInDept = function (departmentID, callback){
 exports.newEmployee = function (name, departmentID, address, nin, bankNumber, startingSalary, callback){
     db.query(
         "INSERT INTO `employee` (`Name`, `DepartmentID`, `Address`, `NIN`, `BankNumber`, `StartingSalary`) "
-        + "VALUES ('?','?','?','?','?',?)",
+        + "VALUES (?,?,?,?,?,?)",
         [name, departmentID, address, nin, bankNumber, startingSalary],
         function(err){
             if(err) throw err;

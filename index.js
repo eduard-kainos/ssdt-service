@@ -9,7 +9,7 @@ app.post('/login', function(req, res) {
     console.log("login request");
     const username = req.body.username;
     const password = req.body.password;
-    console.log(username + " " + password);
+    //console.log(username + " " + password);
 
     if(username && password) {
         db.login(username, password, function(rows) {
