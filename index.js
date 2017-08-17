@@ -17,7 +17,7 @@ app.post('/login', function(req, res) {
     }
 });
 
-app.get('/emps', function(req, res){
+app.post('/emps', function(req, res){
     const departmentID = req.body.departmentID;
 
     db.getEmployeesInDept(departmentID, function(rows){
