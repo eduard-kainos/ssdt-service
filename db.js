@@ -6,7 +6,7 @@ var db;
 exports.login = function (username, password, callback){
     console.log("logging in'");
     db = mysql.createConnection({
-        host: "192.168.1.215",
+        host: "localhost",
         user: username,
         password: password,
         database: 'ssdtdb'
