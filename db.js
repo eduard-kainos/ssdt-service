@@ -27,7 +27,7 @@ exports.login = function (username, password, callback){
 
 exports.getEmployeesInDept = function (departmentID, callback){
     db.query(
-        "SELECT name FROM employee WHERE `DepartmentID` = ?" +
+        "SELECT name FROM employee WHERE `DepartmentID` = ? " +
         "LIMIT 10",
         [departmentID],
         function(err, rows){

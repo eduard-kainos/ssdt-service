@@ -20,10 +20,13 @@ app.post('/login', function(req, res) {
 app.post('/emps', function(req, res){
     const departmentID = req.body.departmentID;
 
-    db.getEmployeesInDept(departmentID, function(rows){
-        res.send(rows);
-        console.log('Request processed: ');
-    });
+    console.log("DEP", departmentID);
+    if(departmentID){
+        db.getEmployeesInDept(departmentID, function(rows){
+            res.send(rows);
+            console.log('Request processed: ');
+        });
+    }
 });
 
 app.post('/new', function(req, res){
