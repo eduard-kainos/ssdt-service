@@ -5,24 +5,32 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
-app.get('/cities', function(req, res){
-    db.getCitiesInCountry('GBR', function(rows){
+/*app.post('/login', function(req, res) {
+
+} */
+
+app.get('/emps', function(req, res){
+    db.getEmployeesInDept('1', function(rows){
         res.send(rows);
         console.log('Request processed: ');
     });
 });
 
-app.post('/city', function(req, res){
-    const cityID = req.body.cityID;
-    const cityPop = req.body.cityPop;
+app.post('/new', function(req, res){
+    const name = req.body.name;
+    const departmentID = req.body.departmentID;
+    const address = req.body.address;
+    const nin = req.body.nin;
+    const bankNo = req.body.bankNo;
+    const startingSalary = req.body.startingSalary;
 
-    if(cityID && cityPop){
-        db.updateCityPop(cityID, cityPop, function(message){
+    if(name && departmentID && address && nin && bankNo && startingSalary){
+        db.newEmployee(name, departmentID, address, nin, bankNo, startingSalary, function(message){
             res.send(message);
         });
     }
 });
 
 app.listen(8002, function() {
-    console.log('World API listening on port 8002..');
+    console.log('ssdt-express listening on port 8002..');
 });
