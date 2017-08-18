@@ -34,7 +34,7 @@ app.post('/new', function(req, res){
     const departmentID = req.body.departmentID;
     const address = req.body.address;
     const nin = req.body.nin;
-    const bankNo = req.body.bankNo;
+    const bankNo = req.body.bankNumber;
     const startingSalary = req.body.startingSalary;
 
     if(name && departmentID && address && nin && bankNo && startingSalary){
